@@ -191,6 +191,13 @@ public class MenjacnicaGUI extends JFrame {
 		panel.add(btnDodajKurs);
 		
 		JButton btnObrisiKurs = new JButton("Obrisi kurs");
+		btnObrisiKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ObrisiKursGUI ok = new ObrisiKursGUI(m);
+				
+				ok.setVisible(true);
+			}
+		});
 		btnObrisiKurs.setBounds(13, 33, 120, 23);
 		panel.add(btnObrisiKurs);
 		
@@ -261,6 +268,13 @@ public class MenjacnicaGUI extends JFrame {
 		popupMenu.add(mntmDodajKurs);
 		
 		JMenuItem mntmObrisiKurs = new JMenuItem("Obrisi kurs");
+		mntmObrisiKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodajKursGUI dk = new DodajKursGUI(m);
+				
+				dk.setVisible(true);
+			}
+		});
 		popupMenu.add(mntmObrisiKurs);
 		
 		JMenuItem mntmIzavrsiZamenu = new JMenuItem("Izavrsi zamenu");

@@ -9,19 +9,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.TextArea;
-import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
 
-public class DodajKursGUI extends JFrame {
+public class ObrisiKursGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtSifra;
@@ -30,90 +25,112 @@ public class DodajKursGUI extends JFrame {
 	private JTextField txtKupovni;
 	private JTextField txtSrednji;
 	private JTextField txtSkraceni;
+	
+	private JButton btnObrisi;
 
-	private MenjacnicaGUI m;
+	
 
 	/**
 	 * Create the frame.
-	 * @param m 
 	 */
-	public DodajKursGUI(MenjacnicaGUI m) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DodajKursGUI.class.getResource("/icons/dodaj.png")));
-		this.m = m;
+	public ObrisiKursGUI(MenjacnicaGUI m) {
 		setResizable(false);
-		setTitle("Dodaj kurs");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ObrisiKursGUI.class.getResource("/icons/obrisi.png")));
+		setTitle("Obrisi kurs");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 423, 259);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 2, 15, 5));
 		
-		JLabel lblSifra = new JLabel("Sifra");
-		contentPane.add(lblSifra);
+		JLabel label = new JLabel("Sifra");
+		contentPane.add(label);
 		
-		JLabel lblNaziv = new JLabel("Naziv");
-		lblNaziv.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.add(lblNaziv);
+		JLabel label_1 = new JLabel("Naziv");
+		label_1.setAlignmentX(0.5f);
+		contentPane.add(label_1);
 		
 		txtSifra = new JTextField();
-		txtSifra.setMinimumSize(new Dimension(1, 5));
 		txtSifra.setPreferredSize(new Dimension(6, 10));
-		txtSifra.setAlignmentX(Component.LEFT_ALIGNMENT);
-		contentPane.add(txtSifra);
+		txtSifra.setMinimumSize(new Dimension(1, 5));
 		txtSifra.setColumns(10);
+		txtSifra.setAlignmentX(0.0f);
+		contentPane.add(txtSifra);
 		
 		txtNaziv = new JTextField();
-		txtNaziv.setMinimumSize(new Dimension(6, 10));
 		txtNaziv.setPreferredSize(new Dimension(6, 10));
-		contentPane.add(txtNaziv);
+		txtNaziv.setMinimumSize(new Dimension(6, 10));
 		txtNaziv.setColumns(10);
+		contentPane.add(txtNaziv);
 		
-		JLabel lblProdajniKurs = new JLabel("Prodajni kurs");
-		contentPane.add(lblProdajniKurs);
+		JLabel label_2 = new JLabel("Prodajni kurs");
+		contentPane.add(label_2);
 		
-		JLabel lblKupovniKurs = new JLabel("Kupovni kurs");
-		lblKupovniKurs.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.add(lblKupovniKurs);
+		JLabel label_3 = new JLabel("Kupovni kurs");
+		label_3.setAlignmentX(0.5f);
+		contentPane.add(label_3);
 		
 		txtProdajni = new JTextField();
 		txtProdajni.setPreferredSize(new Dimension(6, 10));
 		txtProdajni.setMinimumSize(new Dimension(6, 10));
-		txtProdajni.setAlignmentX(Component.LEFT_ALIGNMENT);
-		contentPane.add(txtProdajni);
 		txtProdajni.setColumns(10);
+		txtProdajni.setAlignmentX(0.0f);
+		contentPane.add(txtProdajni);
 		
 		txtKupovni = new JTextField();
 		txtKupovni.setPreferredSize(new Dimension(6, 10));
 		txtKupovni.setMinimumSize(new Dimension(6, 15));
-		contentPane.add(txtKupovni);
 		txtKupovni.setColumns(10);
+		contentPane.add(txtKupovni);
 		
-		JLabel lblSrednjiKurs = new JLabel("Srednji kurs");
-		contentPane.add(lblSrednjiKurs);
+		JLabel label_4 = new JLabel("Srednji kurs");
+		contentPane.add(label_4);
 		
-		JLabel lblSkraceniNaziv = new JLabel("Skraceni naziv");
-		lblSkraceniNaziv.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.add(lblSkraceniNaziv);
+		JLabel label_5 = new JLabel("Skraceni naziv");
+		label_5.setAlignmentX(0.5f);
+		contentPane.add(label_5);
 		
 		txtSrednji = new JTextField();
 		txtSrednji.setPreferredSize(new Dimension(6, 10));
 		txtSrednji.setMinimumSize(new Dimension(6, 15));
-		txtSrednji.setAlignmentX(Component.LEFT_ALIGNMENT);
-		contentPane.add(txtSrednji);
 		txtSrednji.setColumns(10);
+		txtSrednji.setAlignmentX(0.0f);
+		contentPane.add(txtSrednji);
 		
 		txtSkraceni = new JTextField();
 		txtSkraceni.setPreferredSize(new Dimension(6, 10));
 		txtSkraceni.setMinimumSize(new Dimension(6, 15));
-		contentPane.add(txtSkraceni);
 		txtSkraceni.setColumns(10);
+		contentPane.add(txtSkraceni);
 		
-		
-		JButton btnDodaj = new JButton("Dodaj");
-		btnDodaj.addActionListener(new ActionListener() {
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Zaista obrisi kurs");
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if (chckbxNewCheckBox.isSelected()) 
+					btnObrisi.setEnabled(true);	
+				else
+					btnObrisi.setEnabled(false);
+			}
+		});
+		contentPane.add(chckbxNewCheckBox);
+		
+		JLabel label_6 = new JLabel("");
+		contentPane.add(label_6);
+		
+		
+		
+		JButton btnOdustanid = new JButton("Odustani");
+		btnOdustanid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+			
+		});
+		
+		btnObrisi = new JButton("Obrisi");
+		btnObrisi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				String s = "";
 				s = s + "Sifra: " + txtSifra.getText() + "; Naziv: " + txtNaziv.getText()
 						+ "; Prodajni kurs: " + txtProdajni.getText() + "; Srednji kurs: " + txtSrednji.getText()
@@ -121,21 +138,12 @@ public class DodajKursGUI extends JFrame {
 				//ispis
 				
 				dispose();
-				
 			}
 		});
-		contentPane.add(btnDodaj);
-		
-		JButton btnOdustani = new JButton("Odustani");
-		btnOdustani.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-			}
-		});
-		btnOdustani.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.add(btnOdustani);
+		btnObrisi.setEnabled(false);
+		contentPane.add(btnObrisi);
+		btnOdustanid.setAlignmentX(0.5f);
+		contentPane.add(btnOdustanid);
 	}
-	
-	
 
 }
