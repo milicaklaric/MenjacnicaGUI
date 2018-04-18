@@ -41,11 +41,15 @@ import javax.swing.JSeparator;
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class MenjacnicaGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JTextArea textArea;
+	private MenjacnicaGUI m;
+	
 
 	/**
 	 * Launch the application.
@@ -62,11 +66,13 @@ public class MenjacnicaGUI extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public MenjacnicaGUI() {		
+	public MenjacnicaGUI() {
+		this.m = this;
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -90,7 +96,7 @@ public class MenjacnicaGUI extends JFrame {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		
 		JMenuItem mntmOpen = new JMenuItem("Open");
 		mntmOpen.addActionListener(new ActionListener() {
@@ -102,7 +108,7 @@ public class MenjacnicaGUI extends JFrame {
 				if (opcija == JFileChooser.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
 					
-					textArea.setText("Ucitan fajl:  " + f.getAbsolutePath() + '\n');
+					textArea.append("Ucitan fajl:  " + f.getAbsolutePath() + '\n');
 				}
 			}
 		}
@@ -171,6 +177,16 @@ public class MenjacnicaGUI extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnDodajKurs = new JButton("Dodaj kurs");
+		btnDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodajKursGUI dk = new DodajKursGUI(m);
+				
+				dk.setVisible(true);
+				
+			}
+		});
+		
+		
 		btnDodajKurs.setBounds(13, 5, 120, 23);
 		panel.add(btnDodajKurs);
 		
@@ -192,11 +208,11 @@ public class MenjacnicaGUI extends JFrame {
 		panel_1.add(textArea);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setForeground(new Color(0, 0, 0));
+		scrollPane.setForeground(new Color(255, 255, 255));
 		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		scrollPane.setAutoscrolls(true);
 		scrollPane.setBorder(new LineBorder(new Color(130, 135, 144)));
-		scrollPane.setBackground(new Color(0, 0, 0));
+		scrollPane.setBackground(SystemColor.menu);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
@@ -234,6 +250,14 @@ public class MenjacnicaGUI extends JFrame {
 		addPopup(table, popupMenu);
 		
 		JMenuItem mntmDodajKurs = new JMenuItem("Dodaj kurs");
+		mntmDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodajKursGUI dk = new DodajKursGUI(m);
+				
+				dk.setVisible(true);
+				
+			}
+		});
 		popupMenu.add(mntmDodajKurs);
 		
 		JMenuItem mntmObrisiKurs = new JMenuItem("Obrisi kurs");
@@ -241,8 +265,11 @@ public class MenjacnicaGUI extends JFrame {
 		
 		JMenuItem mntmIzavrsiZamenu = new JMenuItem("Izavrsi zamenu");
 		popupMenu.add(mntmIzavrsiZamenu);
+	
 	}
-
+	
+	
+	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 	}
 }
