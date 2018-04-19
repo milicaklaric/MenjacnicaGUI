@@ -33,7 +33,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public IzvrsiZamenuGUI() {
+	public IzvrsiZamenuGUI(MenjacnicaGUI m) {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(IzvrsiZamenuGUI.class.getResource("/icons/zameni.png")));
 		setTitle("Izvrsi zamenu");
@@ -116,27 +116,27 @@ public class IzvrsiZamenuGUI extends JFrame {
 		btnIzvrsiZamenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = "";
-				String v = "";
-				String t = "";
+				String valuta = "";
+				String transakcija = "";
+				
 				switch (comboBox.getSelectedIndex()) {
-					case 0: v = "euro";
+					case 0: valuta = "euro";
 							break;
-					case 1: v = "dolar";
+					case 1: valuta = "dolar";
 							break;
-					case 2: v = "franak";
+					case 2: valuta = "franak";
 							break;
 				}
 				
 				if (rdbtnKupovna.isSelected())
-					t = "kupovina";
+					transakcija = "kupovina";
 				else
-					t = "prodaja";
+					transakcija = "prodaja";
 					
-				s = s + "Valuta: " + v + "; Iznos: " + txtIznos.getText()
-						+ "; Vrsta transakcije: " + t ;
+				s = s + "Valuta: " + valuta + "; Iznos: " + txtIznos.getText()
+						+ "; Vrsta transakcije: " + transakcija ;
 				
-				//ispis
-				
+				m.ispis(s);
 				dispose();
 			}
 			

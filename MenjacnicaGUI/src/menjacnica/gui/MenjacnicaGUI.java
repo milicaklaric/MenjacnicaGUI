@@ -42,6 +42,7 @@ import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.JScrollBar;
 
 public class MenjacnicaGUI extends JFrame {
 
@@ -88,7 +89,7 @@ public class MenjacnicaGUI extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/icons/Calculator-icon (1).png")));
 		setTitle("Menjacnica");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 630, 354);
+		setBounds(100, 100, 630, 430);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -204,7 +205,7 @@ public class MenjacnicaGUI extends JFrame {
 		JButton btnIzvrsiZamenu = new JButton("Izvrsi zamenu");
 		btnIzvrsiZamenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IzvrsiZamenuGUI zk = new IzvrsiZamenuGUI();
+				IzvrsiZamenuGUI zk = new IzvrsiZamenuGUI(m);
 				
 				zk.setVisible(true);
 			}
@@ -213,7 +214,7 @@ public class MenjacnicaGUI extends JFrame {
 		panel.add(btnIzvrsiZamenu);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(10, 70));
+		panel_1.setPreferredSize(new Dimension(10, 80));
 		panel_1.setBorder(new TitledBorder(null, "STATUS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new BorderLayout(0, 0));
@@ -287,7 +288,7 @@ public class MenjacnicaGUI extends JFrame {
 		JMenuItem mntmIzavrsiZamenu = new JMenuItem("Izavrsi zamenu");
 		mntmIzavrsiZamenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IzvrsiZamenuGUI zk = new IzvrsiZamenuGUI();
+				IzvrsiZamenuGUI zk = new IzvrsiZamenuGUI(m);
 				
 				zk.setVisible(true);
 			}
@@ -296,7 +297,9 @@ public class MenjacnicaGUI extends JFrame {
 	
 	}
 	
-	
+	public void ispis(String s) {
+		m.textArea.append(s + '\n');
+	}
 	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 	}

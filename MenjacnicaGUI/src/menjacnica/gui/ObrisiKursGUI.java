@@ -132,11 +132,11 @@ public class ObrisiKursGUI extends JFrame {
 		btnObrisi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = "";
-				s = s + "Sifra: " + txtSifra.getText() + "; Naziv: " + txtNaziv.getText()
+				s = s + "Obrisan kurs:  Sifra: " + txtSifra.getText() + "; Naziv: " + txtNaziv.getText()
 						+ "; Prodajni kurs: " + txtProdajni.getText() + "; Srednji kurs: " + txtSrednji.getText()
 						+ "; Kupovni kurs: " + txtKupovni.getText() + "; Skraceni naziv: " + txtSkraceni.getText();
-				//ispis
-				
+			
+				m.ispis(s);
 				dispose();
 			}
 		});

@@ -115,10 +115,10 @@ public class DodajKursGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				String s = "";
-				s = s + "Sifra: " + txtSifra.getText() + "; Naziv: " + txtNaziv.getText()
+				s = s + "Dodat kurs:  Sifra: " + txtSifra.getText() + "; Naziv: " + txtNaziv.getText()
 						+ "; Prodajni kurs: " + txtProdajni.getText() + "; Srednji kurs: " + txtSrednji.getText()
 						+ "; Kupovni kurs: " + txtKupovni.getText() + "; Skraceni naziv: " + txtSkraceni.getText();
-				//ispis
+				m.ispis(s);
 				
 				dispose();
 				
@@ -137,5 +137,4 @@ public class DodajKursGUI extends JFrame {
 	}
 	
 	
-
 }
